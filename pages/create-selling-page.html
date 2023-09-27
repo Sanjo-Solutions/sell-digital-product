@@ -28,11 +28,12 @@
     >.
   </p>
 
-  <%- md`
-### Giving us access to your Stripe account
+  <h3>Giving us access to your Stripe account</h3>
 
-We require access to your Stripe account, so that we can set up the Stripe resources for selling the product.
-` %>
+  <p>
+    We require access to your Stripe account, so that we can set up the Stripe
+    resources for selling the product.
+  </p>
 
   <h2 id="setting-up-download-page-and-purchased-email">
     Setting up download page and purchased e-mail
@@ -43,29 +44,57 @@ We require access to your Stripe account, so that we can set up the Stripe resou
     <a href="https://aws.amazon.com/" target="_blank">AWS</a>.
   </p>
 
-  <%- md`
-### Giving us access to your AWS account
+  <h3>Giving us access to your AWS account</h3>
 
-We require access to your account, so that we can set up the AWS resources for selling the product.
+  <p>
+    We require access to your account, so that we can set up the AWS resources
+    for selling the product.
+  </p>
 
-1. [Create role](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/create)
-   1. Step 1: Select trusted entity:
-      1. Trusted entity type: AWS account
-      2. Another AWS account
-      3. Account ID: \\<ACCOUNT_ID>
-      4. Requires external ID: yes
-      5. External ID: \\<EXTERNAL_ID>
-      6. Next
-   2. Step 2: Add permissions:
-      1. Check "AdministratorAccess"
-      2. Next
-   3. Step 3: Name, review and create
-      1. Role name: SellDigitalProduct
-      2. Create role
-2. [Open the role](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/details/SellDigitalProduct?section=permissions)
-3. Copy the ARN
-4. Give us the ARN
-` %>
+  <ol>
+    <li>
+      <a
+        href="https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/create"
+        >Create role</a
+      >
+
+      <ol>
+        <li>
+          Step 1: Select trusted entity:
+          <ol>
+            <li>Trusted entity type: AWS account</li>
+            <li>Another AWS account</li>
+            <li>Account ID: &lt;ACCOUNT_ID></li>
+            <li>Requires external ID: yes</li>
+            <li>External ID: &lt;EXTERNAL_ID></li>
+            <li>Next</li>
+          </ol>
+        </li>
+        <li>
+          Step 2: Add permissions:
+          <ol>
+            <li>Check "AdministratorAccess"</li>
+            <li>Next</li>
+          </ol>
+        </li>
+        <li>
+          Step 3: Name, review and create
+          <ol>
+            <li>Role name: SellDigitalProduct</li>
+            <li>Create role</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>
+      <a
+        href="https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/details/SellDigitalProduct?section=permissions"
+        >Open the role</a
+      >
+    </li>
+    <li>Copy the ARN</li>
+    <li>Give us the ARN</li>
+  </ol>
 
   <div class="mb-3">
     <label for="arn" class="form-label">ARN</label>
@@ -84,7 +113,7 @@ We require access to your account, so that we can set up the AWS resources for s
 </form>
 
 <script type="module">
-  import { saveInputValues } from "/public/js/saveInputValues.js"
+  import { saveInputValues } from "/js/saveInputValues.js"
 
   saveInputValues()
 </script>

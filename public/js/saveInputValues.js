@@ -1,6 +1,7 @@
 export function saveInputValues() {
   restoreValues()
   listenForChanges()
+  saveBeforeLeavingPage()
 }
 
 function restoreValues() {
@@ -16,11 +17,35 @@ function restoreValues() {
 
 function listenForChanges() {
   document.addEventListener("change", function (event) {
-    if (event.target.matches('input[type="text"]')) {
+    if (isTrackedElement(event.target)) {
       const input = event.target
-      if (input.id) {
-        localStorage.setItem(input.id, input.value)
-      }
+      saveValueOfInput(input)
     }
   })
+}
+
+function saveBeforeLeavingPage() {
+  let focusedInput = null
+
+  document.addEventListener("focusin", function (event) {
+    if (isTrackedElement(event.target)) {
+      focusedInput = event.target
+    }
+  })
+
+  window.addEventListener("beforeunload", function () {
+    if (focusedInput) {
+      saveValueOfInput(focusedInput)
+    }
+  })
+}
+
+function isTrackedElement(element) {
+  return element.matches('input[type="text"]')
+}
+
+function saveValueOfInput(input) {
+  if (input.id) {
+    localStorage.setItem(input.id, input.value)
+  }
 }
