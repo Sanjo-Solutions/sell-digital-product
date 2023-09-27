@@ -1,0 +1,92 @@
+<!-- CODE: setTitle('Sell digital product') -->
+<!-- LAYOUT: default.html -->
+<form>
+  <h1 id="create-selling-page">Create selling page</h1>
+
+  <div class="mb-3">
+    <label for="file" class="form-label">The file you'd like to sell</label>
+    <input id="file" type="file" class="form-control" />
+  </div>
+
+  <div class="mb-3">
+    <label for="price" class="form-label"
+      >The price you'd like to sell the file for</label
+    >
+    <div class="input-group">
+      <input id="price" type="text" class="form-control" />
+      <span class="input-group-text" id="basic-addon2">€</span>
+    </div>
+  </div>
+
+  <h2 id="setting-up-checkout-and-payment-processing">
+    Setting up checkout and payment processing
+  </h2>
+
+  <p>
+    For checkout and payment processing Stripe can be used. You can sign up on
+    <a href="https://stripe.com/en-de/payments" target="_blank">their website</a
+    >.
+  </p>
+
+  <%- md`
+### Giving us access to your Stripe account
+
+We require access to your Stripe account, so that we can set up the Stripe resources for selling the product.
+` %>
+
+  <h2 id="setting-up-download-page-and-purchased-email">
+    Setting up download page and purchased e-mail
+  </h2>
+
+  <div>asdad</div>
+
+  <p>
+    For those features, AWS can be used. Please sign up to
+    <a href="https://aws.amazon.com/" target="_blank">AWS</a>.
+  </p>
+
+  <%- md`
+### Giving us access to your AWS account
+
+We require access to your account, so that we can set up the AWS resources for selling the product.
+
+1. [Create role](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/create)
+   1. Step 1: Select trusted entity:
+      1. Trusted entity type: AWS account
+      2. Another AWS account
+      3. Account ID: \\<ACCOUNT_ID>
+      4. Requires external ID: yes
+      5. External ID: \\<EXTERNAL_ID>
+      6. Next
+   2. Step 2: Add permissions:
+      1. Check "AdministratorAccess"
+      2. Next
+   3. Step 3: Name, review and create
+      1. Role name: SellDigitalProduct
+      2. Create role
+2. [Open the role](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/details/SellDigitalProduct?section=permissions)
+3. Copy the ARN
+4. Give us the ARN
+` %>
+
+  <div class="mb-3">
+    <label for="arn" class="form-label">ARN</label>
+    <input
+      id="arn"
+      type="text"
+      class="form-control"
+      pattern="arn:aws:iam::\d+:role/.+"
+      placeholder="arn:aws:iam::XXXXXXXXXXXX:role/SellDigitalProduct"
+    />
+  </div>
+
+  <div class="text-end">
+    <button type="submit" class="btn btn-primary">Create selling page</button>
+  </div>
+</form>
+
+<script type="module">
+  import { saveInputValues } from "/public/js/saveInputValues.js"
+
+  saveInputValues()
+</script>
