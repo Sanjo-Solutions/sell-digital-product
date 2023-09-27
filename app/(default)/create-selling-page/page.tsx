@@ -56,7 +56,10 @@ export default function Page() {
       </p>
       <ol>
         <li>
-          <a href="https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/create">
+          <a
+            href="https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/create"
+            target="_blank"
+          >
             Create role
           </a>
           <ol>
@@ -88,7 +91,10 @@ export default function Page() {
           </ol>
         </li>
         <li>
-          <a href="https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/details/SellDigitalProduct?section=permissions">
+          <a
+            href="https://us-east-1.console.aws.amazon.com/iamv2/home#/roles/details/SellDigitalProduct?section=permissions"
+            target="_blank"
+          >
             Open the role
           </a>
         </li>
